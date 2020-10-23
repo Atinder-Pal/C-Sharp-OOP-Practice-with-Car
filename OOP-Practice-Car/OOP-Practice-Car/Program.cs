@@ -6,15 +6,15 @@ namespace OOP_Practice_Car
     {
         static void Main(string[] args)
         {
-            //Testing the Odometer class and its methods
-            //Odometer odo = new Odometer();
-            //odo.Increment(999980);
-            //Console.WriteLine( odo.Counter );
-            //odo.Increment(40);
-            //Console.WriteLine(odo.Counter);
+            //Testing the Odometer Class and its methods
+            /**Odometer odo = new Odometer();
+            odo.Increment(999980);
+            Console.WriteLine(odo.Counter);
+            odo.Increment(40);
+            Console.WriteLine(odo.Counter);*/
 
             //Testing FuelTank Class and its methods
-            FuelTank testFueltank = new FuelTank();
+            /**FuelTank testFueltank = new FuelTank();
 
             // Citation
             //https://stackoverflow.com/questions/19671667/cannot-implicitly-convert-type-double-to-float
@@ -24,7 +24,17 @@ namespace OOP_Practice_Car
             Console.WriteLine( testFueltank.Capacity );
             Console.WriteLine(testFueltank.Level);
             testFueltank.BurnFuel(40.2f);
-            Console.WriteLine(testFueltank.Level);
+            Console.WriteLine(testFueltank.Level);*/
+
+            //Testing Car Class and its methods
+            Car mycar = new Car();
+            mycar.Drive();
+            Console.WriteLine( mycar.ToString());
+
+            Car yourCar = new Car("Ford", "Crown Victoria", "White", 5, 10, new Odometer(), new FuelTank());
+            Console.WriteLine(yourCar.FuelEfficiency);
+            yourCar.Drive( 20 );
+            Console.WriteLine( yourCar.ToString());
         }
     }
 }
