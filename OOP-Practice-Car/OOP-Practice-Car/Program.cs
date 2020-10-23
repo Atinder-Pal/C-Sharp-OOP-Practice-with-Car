@@ -31,8 +31,8 @@ namespace OOP_Practice_Car
             mycar.Drive();
             Console.WriteLine( mycar.ToString());
 
-            Car yourCar = new Car("Ford", "Crown Victoria", "White", 5, 10, new Odometer(), new FuelTank());
-            Console.WriteLine(yourCar.FuelEfficiency);
+            Car yourCar = new Car("Ford", "Crown Victoria", "White", 5, new Motor(10), new Odometer(), new FuelTank());
+            Console.WriteLine(yourCar.CarMotor.FuelEfficiency);
             yourCar.Drive( 20 );
             Console.WriteLine( yourCar.ToString());
         }

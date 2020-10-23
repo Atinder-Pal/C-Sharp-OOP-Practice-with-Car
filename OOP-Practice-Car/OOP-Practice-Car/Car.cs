@@ -10,7 +10,7 @@ namespace OOP_Practice_Car
         private string _model;
         private string _color;
         private int _maximumOccupancy;
-        private float _fuelEfficiency;
+        
         public string Make 
         {
             get
@@ -56,18 +56,9 @@ namespace OOP_Practice_Car
                 _maximumOccupancy = value;
             }
         }
-        public float FuelEfficiency 
-        {
-            get
-            {
-                return _fuelEfficiency;
-            }
-            set
-            {
-                _fuelEfficiency = value;
-            }
-        }
+        
         //Single Class refrence
+        public Motor CarMotor { get; set; }
         public Odometer OdometerReading { get; set; }
         public FuelTank CarFuelTank { get; set; }
 
@@ -78,19 +69,19 @@ namespace OOP_Practice_Car
             Model = "Mustang";
             Color = "Red";
             MaximumOccupancy = 4;
-            FuelEfficiency = 7;
+            CarMotor = new Motor(7);
             OdometerReading = new Odometer();
             CarFuelTank = new FuelTank();
         }
 
         //Greedy Constructor
-        public Car(String make, string model, string color, int maximumOccupancy, float fuelEfficiency, Odometer odometer, FuelTank fuelTank )
+        public Car(String make, string model, string color, int maximumOccupancy, Motor fuelEfficiency, Odometer odometer, FuelTank fuelTank )
         {
             Make = make;
             Model = model;
             Color = color;
             MaximumOccupancy = maximumOccupancy;
-            FuelEfficiency = fuelEfficiency;
+            CarMotor = fuelEfficiency;
             OdometerReading = odometer;
             CarFuelTank = fuelTank;
         }
@@ -99,13 +90,13 @@ namespace OOP_Practice_Car
         public void Drive()
         {
             const int defaultDistance = 10;
-            float fuelUsed = defaultDistance / FuelEfficiency;
+            float fuelUsed = defaultDistance / CarMotor.FuelEfficiency;
             CarFuelTank.BurnFuel( fuelUsed );
             OdometerReading.Increment( defaultDistance );
         }
         public void Drive( int distance )
         {            
-            float fuelUsed = distance / FuelEfficiency;
+            float fuelUsed = distance / CarMotor.FuelEfficiency;
             CarFuelTank.BurnFuel(fuelUsed);
             OdometerReading.Increment(distance);
         }
@@ -113,7 +104,7 @@ namespace OOP_Practice_Car
         public float CalculateDistanceToEmpty()
         {
             
-            float distanceToEmpty = CarFuelTank.Level * FuelEfficiency;
+            float distanceToEmpty = CarFuelTank.Level * CarMotor.FuelEfficiency;
             return distanceToEmpty;
         }
 
