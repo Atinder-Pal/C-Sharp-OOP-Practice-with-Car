@@ -112,13 +112,19 @@ namespace OOP_Practice_Car
 
         public float CalculateDistanceToEmpty()
         {
+            
             float distanceToEmpty = CarFuelTank.Level * FuelEfficiency;
             return distanceToEmpty;
         }
 
         public override string ToString()
         {
-            return $"A {Color} {Make} {Model} with {OdometerReading.Counter}KM on the odometer, that has enough fuel to travel { CalculateDistanceToEmpty() } KM";
+            //Citation
+            //https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-pad-a-number-with-leading-zeros
+            //Above official doc shows how to pad a numeric value with eading zeroes to a specific length
+            string format = "000000.##";
+            return $"A {Color} {Make} {Model} with {OdometerReading.Counter.ToString(format)}KM on the odometer, that has enough fuel to travel { CalculateDistanceToEmpty() } KM";
+            //End Citation
         }
     }
 }
